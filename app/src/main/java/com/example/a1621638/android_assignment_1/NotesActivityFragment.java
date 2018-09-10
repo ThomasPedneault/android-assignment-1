@@ -1,5 +1,7 @@
 package com.example.a1621638.android_assignment_1;
 
+import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
-import android.widget.Toolbar;
+import android.widget.TextView;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -16,8 +18,8 @@ import android.widget.Toolbar;
 public class NotesActivityFragment extends Fragment {
 
     private LinearLayout optionsLinearLayout;
-    private Toolbar optionsToolbar;
     private Switch showOptionsSwitch;
+    private TextView reminderTextView;
 
     public NotesActivityFragment() {
     }
@@ -44,6 +46,36 @@ public class NotesActivityFragment extends Fragment {
             }
         });
 
+        reminderTextView = root.findViewById(R.id.reminder_TextView);
+        reminderTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: Implement reminders here
+            }
+        });
+
+        // Set the OnClick listeners for the CircleView objects.
+        setCircleViewOnClickListener(root, R.id.red_circleView);
+        setCircleViewOnClickListener(root, R.id.orange_circleView);
+        setCircleViewOnClickListener(root, R.id.peach_circleView);
+        setCircleViewOnClickListener(root, R.id.green_circleView);
+        setCircleViewOnClickListener(root, R.id.turquoise_circleView);
+        setCircleViewOnClickListener(root, R.id.cyan_circleView);
+        setCircleViewOnClickListener(root, R.id.purple_circleView);
+        setCircleViewOnClickListener(root, R.id.brown_circleView);
+
         return root;
+    }
+
+    private void setCircleViewOnClickListener(View root, int id) {
+        final ConstraintLayout mainConstraintLayout = root.findViewById(R.id.main_ConstraintLayout);
+        final CircleView circleView = root.findViewById(id);
+        circleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int bkgColor = circleView.getColor();
+                mainConstraintLayout.setBackgroundColor(bkgColor);
+            }
+        });
     }
 }

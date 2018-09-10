@@ -2,10 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
     android:animateLayoutChanges="true"
+    android:background="#ffffff"
     tools:context=".NotesActivityFragment"
     tools:showIn="@layout/content_notes">
 
@@ -68,6 +69,7 @@
         android:layout_height="84dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/footer_Toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -77,49 +79,89 @@
             android:layout_width="match_parent"
             android:layout_height="41dp"
             android:layout_marginLeft="8dp"
+            android:clickable="true"
             android:gravity="center"
-            android:text="Set reminder"
-            android:textAlignment="viewStart" />
+            android:text="Add a reminder"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/temp1"
+            <view
+                android:id="@+id/red_circleView"
+                class="com.example.a1621638.android_assignment_1.CircleView"
+                id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="tEMP" />
+                app:circleColor="@color/redCircleColor" />
 
-            <Button
-                android:id="@+id/temp2"
+            <view
+                android:id="@+id/orange_circleView"
+                class="com.example.a1621638.android_assignment_1.CircleView"
+                id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="tEMP" />
+                app:circleColor="@color/orangeCircleColor" />
 
-            <Button
-                android:id="@+id/temp3"
+            <view
+                android:id="@+id/peach_circleView"
+                class="com.example.a1621638.android_assignment_1.CircleView"
+                id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="tEMP" />
+                app:circleColor="@color/peachCircleColor" />
 
-            <Button
-                android:id="@+id/temp4"
+            <view
+                android:id="@+id/green_circleView"
+                class="com.example.a1621638.android_assignment_1.CircleView"
+                id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="tEMP" />
+                app:circleColor="@color/greenCircleColor" />
 
-            <Button
-                android:id="@+id/temp5"
+            <view
+                android:id="@+id/turquoise_circleView"
+                class="com.example.a1621638.android_assignment_1.CircleView"
+                id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="tEMP" />
+                app:circleColor="@color/turquoiseCircleColor" />
+
+            <view
+                android:id="@+id/cyan_circleView"
+                class="com.example.a1621638.android_assignment_1.CircleView"
+                id="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:circleColor="@color/cyanCircleColor" />
+
+            <view
+                android:id="@+id/purple_circleView"
+                class="com.example.a1621638.android_assignment_1.CircleView"
+                id="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:circleColor="@color/purpleCircleColor" />
+
+            <view
+                android:id="@+id/brown_circleView"
+                class="com.example.a1621638.android_assignment_1.CircleView"
+                id="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:circleColor="@color/brownCircleColor" />
         </LinearLayout>
     </LinearLayout>
 

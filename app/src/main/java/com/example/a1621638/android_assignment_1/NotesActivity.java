@@ -38,6 +38,9 @@ public class NotesActivity extends AppCompatActivity {
             return true;
         }
 
+        NotesActivityFragment frag = (NotesActivityFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragment);
+
         return super.onOptionsItemSelected(item);
     }
 }
