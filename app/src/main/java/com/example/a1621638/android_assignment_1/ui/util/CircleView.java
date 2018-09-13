@@ -1,4 +1,4 @@
-package com.example.a1621638.android_assignment_1;
+package com.example.a1621638.android_assignment_1.ui.util;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,6 +8,8 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.example.a1621638.android_assignment_1.R;
 
 /**
  * A custom view that draws a circle with a border.

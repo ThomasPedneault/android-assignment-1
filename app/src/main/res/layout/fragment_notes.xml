@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="#ffffff"
-    tools:context=".NotesActivityFragment"
+    tools:context=".ui.editor.NoteEditFragment"
     tools:showIn="@layout/content_notes">
 
     <EditText
@@ -69,31 +69,41 @@
         android:layout_height="84dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/footer_Toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/reminder_TextView"
+        <LinearLayout
+            android:id="@+id/reminder_LinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_marginLeft="8dp"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="Add a reminder"
-            android:textAlignment="viewStart"
-            android:textColor="@android:color/background_light"
-            android:textSize="16sp" />
+            android:layout_height="43dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/reminder_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="Add a reminder"
+                android:textAlignment="viewStart"
+                android:textColor="@android:color/background_light"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/colors_LinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <view
                 android:id="@+id/red_circleView"
-                class="com.example.a1621638.android_assignment_1.CircleView"
+                class="com.example.a1621638.android_assignment_1.ui.util.CircleView"
                 id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,7 +112,7 @@
 
             <view
                 android:id="@+id/orange_circleView"
-                class="com.example.a1621638.android_assignment_1.CircleView"
+                class="com.example.a1621638.android_assignment_1.ui.util.CircleView"
                 id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,17 +120,16 @@
                 app:circleColor="@color/orangeCircleColor" />
 
             <view
-                android:id="@+id/peach_circleView"
-                class="com.example.a1621638.android_assignment_1.CircleView"
+                android:id="@+id/yellow_circleView"
+                class="com.example.a1621638.android_assignment_1.ui.util.CircleView"
                 id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:circleColor="@color/peachCircleColor" />
+                android:layout_weight="1" />
 
             <view
                 android:id="@+id/green_circleView"
-                class="com.example.a1621638.android_assignment_1.CircleView"
+                class="com.example.a1621638.android_assignment_1.ui.util.CircleView"
                 id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,26 +137,26 @@
                 app:circleColor="@color/greenCircleColor" />
 
             <view
-                android:id="@+id/turquoise_circleView"
-                class="com.example.a1621638.android_assignment_1.CircleView"
+                android:id="@+id/lightBlue_circleView"
+                class="com.example.a1621638.android_assignment_1.ui.util.CircleView"
                 id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:circleColor="@color/turquoiseCircleColor" />
+                app:circleColor="@color/lightBlueCircleColor" />
 
             <view
-                android:id="@+id/cyan_circleView"
-                class="com.example.a1621638.android_assignment_1.CircleView"
+                android:id="@+id/darkBlue_circleView"
+                class="com.example.a1621638.android_assignment_1.ui.util.CircleView"
                 id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:circleColor="@color/cyanCircleColor" />
+                app:circleColor="@color/darkBlueCircleColor" />
 
             <view
                 android:id="@+id/purple_circleView"
-                class="com.example.a1621638.android_assignment_1.CircleView"
+                class="com.example.a1621638.android_assignment_1.ui.util.CircleView"
                 id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -156,13 +165,14 @@
 
             <view
                 android:id="@+id/brown_circleView"
-                class="com.example.a1621638.android_assignment_1.CircleView"
+                class="com.example.a1621638.android_assignment_1.ui.util.CircleView"
                 id="@+id/view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:circleColor="@color/brownCircleColor" />
         </LinearLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

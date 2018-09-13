@@ -5,10 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="redCircleColor">#d13b6f</color>
     <color name="orangeCircleColor">#e39a36</color>
-    <color name="peachCircleColor">#e7c17e</color>
+    <color name="yellowCircleColor">#e7c17e</color>
     <color name="greenCircleColor">#bcf14c</color>
-    <color name="turquoiseCircleColor">#bdf5e6</color>
-    <color name="cyanCircleColor">#92e0ee</color>
+    <color name="lightBlueCircleColor">#bdf5e6</color>
+    <color name="darkBlueCircleColor">#92e0ee</color>
     <color name="purpleCircleColor">#a177f2</color>
     <color name="brownCircleColor">#b36538</color>
 </resources>

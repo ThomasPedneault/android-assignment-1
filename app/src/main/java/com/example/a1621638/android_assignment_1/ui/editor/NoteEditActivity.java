@@ -1,15 +1,14 @@
-package com.example.a1621638.android_assignment_1;
+package com.example.a1621638.android_assignment_1.ui.editor;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class NotesActivity extends AppCompatActivity {
+import com.example.a1621638.android_assignment_1.R;
+
+public class NoteEditActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class NotesActivity extends AppCompatActivity {
             return true;
         }
 
-        NotesActivityFragment frag = (NotesActivityFragment) getSupportFragmentManager()
+        NoteEditFragment frag = (NoteEditFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragment);
 
         return super.onOptionsItemSelected(item);

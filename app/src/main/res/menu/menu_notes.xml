@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.a1621638.android_assignment_1.NotesActivity">
+    tools:context="com.example.a1621638.android_assignment_1.ui.editor.NoteEditActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
