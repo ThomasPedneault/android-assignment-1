@@ -15,6 +15,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.a1621638.android_assignment_1.model.Note;
 import com.example.a1621638.android_assignment_1.ui.util.CircleView;
 import com.example.a1621638.android_assignment_1.ui.util.DatePickerDialogFragment;
 import com.example.a1621638.android_assignment_1.R;
@@ -25,6 +26,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Stack;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,11 +34,16 @@ import java.util.Date;
 public class NoteEditFragment extends Fragment {
     private static final String DATE_FORMAT_PATTERN = "EEEE, MMMM d 'at' h:mm a";
 
+    private Stack<Note> notes;
+
     private LinearLayout optionsLinearLayout;
     private Switch showOptionsSwitch;
     private TextView reminderTextView;
+    private TextView titleEditText;
+    private TextView bodyEditText;
 
     public NoteEditFragment() {
+        notes = new Stack<>();
     }
 
     @Override
@@ -44,8 +51,42 @@ public class NoteEditFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_notes, container, false);
 
-        optionsLinearLayout = root.findViewById(R.id.options_LinearLayout);
+        setOptionOnCheckedListener(root);
+        setReminderOnClickListener(root);
 
+        titleEditText = root.findViewById(R.id.title_EditText);
+        bodyEditText = root.findViewById(R.id.body_EditText);
+
+        // Set the OnClick listeners for the CircleView objects.
+        setCircleViewOnClickListener(root, R.id.red_circleView, Category.RED);
+        setCircleViewOnClickListener(root, R.id.orange_circleView, Category.ORANGE);
+        setCircleViewOnClickListener(root, R.id.yellow_circleView, Category.YELLOW);
+        setCircleViewOnClickListener(root, R.id.green_circleView, Category.GREEN);
+        setCircleViewOnClickListener(root, R.id.lightBlue_circleView, Category.LIGHT_BLUE);
+        setCircleViewOnClickListener(root, R.id.darkBlue_circleView, Category.DARK_BLUE);
+        setCircleViewOnClickListener(root, R.id.purple_circleView, Category.PURPLE);
+        setCircleViewOnClickListener(root, R.id.brown_circleView, Category.BROWN);
+
+        // Add the note object to the stack.
+        notes.push(createNote());
+
+        return root;
+    }
+
+    private Note createNote() {
+        Note note = new Note();
+
+        note.setTitle(titleEditText.getText().toString());
+        note.setBody(bodyEditText.getText().toString());
+        note.setHasReminder(false);
+        note.setCreated(Calendar.getInstance().getTime());
+        note.setModified(Calendar.getInstance().getTime());
+
+        return note;
+    }
+
+    private void setOptionOnCheckedListener(View root) {
+        optionsLinearLayout = root.findViewById(R.id.options_LinearLayout);
         showOptionsSwitch = root.findViewById(R.id.showOptions_Switch);
         showOptionsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -58,7 +99,9 @@ public class NoteEditFragment extends Fragment {
                 }
             }
         });
+    }
 
+    private void setReminderOnClickListener(View root) {
         reminderTextView = root.findViewById(R.id.reminder_TextView);
         reminderTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,18 +138,6 @@ public class NoteEditFragment extends Fragment {
                 datePickerDialogFragment.show(getFragmentManager(), "datePicker");
             }
         });
-
-        // Set the OnClick listeners for the CircleView objects.
-        setCircleViewOnClickListener(root, R.id.red_circleView, Category.RED);
-        setCircleViewOnClickListener(root, R.id.orange_circleView, Category.ORANGE);
-        setCircleViewOnClickListener(root, R.id.yellow_circleView, Category.YELLOW);
-        setCircleViewOnClickListener(root, R.id.green_circleView, Category.GREEN);
-        setCircleViewOnClickListener(root, R.id.lightBlue_circleView, Category.LIGHT_BLUE);
-        setCircleViewOnClickListener(root, R.id.darkBlue_circleView, Category.DARK_BLUE);
-        setCircleViewOnClickListener(root, R.id.purple_circleView, Category.PURPLE);
-        setCircleViewOnClickListener(root, R.id.brown_circleView, Category.BROWN);
-
-        return root;
     }
 
     private void setCircleViewOnClickListener(View root, int id, Category category) {
