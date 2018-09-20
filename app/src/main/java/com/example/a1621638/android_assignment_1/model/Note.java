@@ -137,6 +137,7 @@ public class Note {
      */
     public Note clone() {
         Note clone = new Note();
+
         clone.id = this.id;
         clone.title = this.title;
         clone.body = this.body;
@@ -145,6 +146,7 @@ public class Note {
         clone.hasReminder = this.hasReminder;
         clone.reminder = this.reminder;
         clone.modified = this.modified;
+
         return clone;
     }
 

@@ -10,5 +10,5 @@
     <color name="lightBlueCircleColor">#bdf5e6</color>
     <color name="darkBlueCircleColor">#92e0ee</color>
     <color name="purpleCircleColor">#a177f2</color>
-    <color name="brownCircleColor">#b36538</color>
+    <color name="whiteCircleColor">#ffffff</color>
 </resources>

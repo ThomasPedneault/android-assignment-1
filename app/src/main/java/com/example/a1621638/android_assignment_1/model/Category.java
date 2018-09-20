@@ -6,7 +6,7 @@ package com.example.a1621638.android_assignment_1.model;
  */
 public enum Category {
 
-    RED(1), ORANGE(2), YELLOW(3), GREEN(4), LIGHT_BLUE(5), DARK_BLUE(6), PURPLE(7), BROWN(8);
+    RED(1), ORANGE(2), YELLOW(3), GREEN(4), LIGHT_BLUE(5), DARK_BLUE(6), PURPLE(7), WHITE(8);
 
     private int colorId;
 
