@@ -2,6 +2,7 @@ package com.example.a1621638.android_assignment_1.ui.editor;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
@@ -80,6 +81,15 @@ public class NoteEditFragment extends Fragment {
         setCircleViewOnClickListener(R.id.white_circleView, Category.WHITE);
 
         return root;
+    }
+
+    public void shareNote() {
+        String data = noteManager.toString();
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, data);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
     private void loadNote(ConstraintLayout layout) {

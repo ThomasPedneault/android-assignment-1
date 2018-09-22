@@ -32,13 +32,16 @@ public class NoteEditActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         NoteEditFragment frag = (NoteEditFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragment);
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_share) {
+            if(frag != null) {
+                frag.shareNote();
+            }
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

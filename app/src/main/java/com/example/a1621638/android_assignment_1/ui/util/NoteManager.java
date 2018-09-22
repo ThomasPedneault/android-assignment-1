@@ -66,4 +66,9 @@ public class NoteManager {
         return currentNote.isHasReminder();
     }
 
+    @Override
+    public String toString() {
+        return currentNote.toString();
+    }
+
 }

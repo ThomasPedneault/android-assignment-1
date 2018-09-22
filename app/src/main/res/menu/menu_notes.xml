@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.a1621638.android_assignment_1.ui.editor.NoteEditActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_share"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="SHARE"
+        app:showAsAction="ifRoom" />
 </menu>
