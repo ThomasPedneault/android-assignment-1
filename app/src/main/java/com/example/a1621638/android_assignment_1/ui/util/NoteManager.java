@@ -14,14 +14,15 @@ public class NoteManager {
     public NoteManager() {
         notes = new Stack<>();
         currentNote = new Note();
+        currentNote.setTitle("");
+        currentNote.setBody("");
+        currentNote.setCategory(Category.WHITE);
     }
 
     public void undo() {
-        if(notes.empty()) {
-            return;
+        if(!notes.isEmpty()) {
+            currentNote = notes.pop();
         }
-
-        currentNote = notes.pop();
     }
 
     public void setTitle(String title) {
@@ -61,7 +62,7 @@ public class NoteManager {
         return currentNote.getReminder();
     }
 
-    public boolean hasReminder() {
+    public boolean isHasReminder() {
         return currentNote.isHasReminder();
     }
 

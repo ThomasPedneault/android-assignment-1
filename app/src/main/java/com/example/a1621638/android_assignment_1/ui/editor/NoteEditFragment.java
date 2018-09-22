@@ -62,6 +62,7 @@ public class NoteEditFragment extends Fragment {
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_notes, container, false);
 
+        // Set the event listeners for all views.
         setOptionOnCheckedListener();
         setReminderOnClickListener();
         setTitleTextChangedListener();
@@ -82,47 +83,15 @@ public class NoteEditFragment extends Fragment {
     }
 
     private void loadNote(ConstraintLayout layout) {
-        titleEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        titleEditText.clearFocus();
         titleEditText.setText(noteManager.getTitle());
-        setTitleTextChangedListener();
 
-        bodyEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        bodyEditText.clearFocus();
         bodyEditText.setText(noteManager.getBody());
-        setBodyTextChangedListener();
 
         setBackgroundColor(noteManager.getCategory(), layout);
 
-        if(noteManager.hasReminder()) {
+        if(noteManager.isHasReminder()) {
             reminderTextView.setText(HAS_REMINDER + dateFormat.format(noteManager.getReminder()));
         } else {
             reminderTextView.setText(NO_REMINDER);
@@ -148,12 +117,16 @@ public class NoteEditFragment extends Fragment {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                noteManager.setTitle(titleEditText.getText().toString());
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
-            public void afterTextChanged(Editable s) { }
+            public void afterTextChanged(Editable s) {
+                // Check that the EditText is focused by the user before saving the change.
+                // Otherwise, everytime setTitle() is called, a new copy of the Note is created.
+                if(getActivity().getCurrentFocus() == titleEditText) {
+                    noteManager.setTitle(titleEditText.getText().toString());
+                }
+            }
         });
     }
 
@@ -164,12 +137,14 @@ public class NoteEditFragment extends Fragment {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                noteManager.setBody(bodyEditText.getText().toString());
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
-            public void afterTextChanged(Editable s) { }
+            public void afterTextChanged(Editable s) {
+                if(getActivity().getCurrentFocus() == bodyEditText) {
+                    noteManager.setBody(bodyEditText.getText().toString());
+                }
+            }
         });
     }
 
