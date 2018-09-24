@@ -83,6 +83,10 @@ public class NoteEditFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Creates a new Intent and displays it to the user.
+     * The user can then decide what to do with the current note.
+     */
     public void shareNote() {
         String data = noteManager.toString();
         Intent sendIntent = new Intent();
@@ -92,6 +96,10 @@ public class NoteEditFragment extends Fragment {
         startActivity(sendIntent);
     }
 
+    /**
+     * Gets the current Note object from the NoteManager and sets all the fields to match the Note.
+     * @param layout
+     */
     private void loadNote(ConstraintLayout layout) {
         titleEditText.clearFocus();
         titleEditText.setText(noteManager.getTitle());
@@ -108,6 +116,11 @@ public class NoteEditFragment extends Fragment {
         }
     }
 
+    /**
+     * Creates the OnClickListener for the Undo button.
+     * When the event is triggered, reverts back the the previous note in the NoteManager history
+     * and updates all the fields in the fragment to match the note.
+     */
     private void setUndoButtonOnClickListener() {
         undoButton = root.findViewById(R.id.undo_Button);
         final ConstraintLayout mainConstraintLayout = root.findViewById(R.id.main_ConstraintLayout);
@@ -120,6 +133,11 @@ public class NoteEditFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates the TextChangedListener for the Title edit text.
+     * When the event is triggered, verify if the change is made by the user and then sets the
+     * title field in the NoteManager to the contents of the EditText.
+     */
     private void setTitleTextChangedListener() {
         titleEditText = root.findViewById(R.id.title_EditText);
         titleEditText.addTextChangedListener(new TextWatcher() {
@@ -140,6 +158,11 @@ public class NoteEditFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates the TextChangedListener for the Body edit text.
+     * When the event is triggered, verify if the change is made by the user and then sets the
+     * body field in the NoteManager to the contents of the EditText.
+     */
     private void setBodyTextChangedListener() {
         bodyEditText = root.findViewById(R.id.body_EditText);
         bodyEditText.addTextChangedListener(new TextWatcher() {
@@ -158,6 +181,10 @@ public class NoteEditFragment extends Fragment {
         });
     }
 
+    /**
+     * Sets the OnCheckedListener for the options switch.
+     * When the event is triggered, toggles the visibility of the options linear layout.
+     */
     private void setOptionOnCheckedListener() {
         optionsLinearLayout = root.findViewById(R.id.options_LinearLayout);
         showOptionsSwitch = root.findViewById(R.id.showOptions_Switch);
@@ -174,6 +201,11 @@ public class NoteEditFragment extends Fragment {
         });
     }
 
+    /**
+     * Sets the OnClickListener for the reminder TextView.
+     * When the event is triggered, creates a DatePicker and a TimePicker dialog fragment.
+     * Then, sets the reminder field in the NoteManager to the date entered by the user.
+     */
     private void setReminderOnClickListener() {
         reminderTextView = root.findViewById(R.id.reminder_TextView);
         reminderTextView.setOnClickListener(new View.OnClickListener() {
@@ -213,6 +245,13 @@ public class NoteEditFragment extends Fragment {
         });
     }
 
+    /**
+     * Sets the OnClickListener for a CircleView object.
+     * When the event is triggered, changes the category in the NoteManager and updates the
+     * background color of the main constraint layout to match the color of the circle view.
+     * @param id id of the CircleView to update
+     * @param category category of the CircleView
+     */
     private void setCircleViewOnClickListener(int id, final Category category) {
         final ConstraintLayout mainConstraintLayout = root.findViewById(R.id.main_ConstraintLayout);
         final CircleView circleView = root.findViewById(id);
@@ -225,6 +264,11 @@ public class NoteEditFragment extends Fragment {
         });
     }
 
+    /**
+     * Sets the background color of the provided layout to the right category color.
+     * @param category
+     * @param layout
+     */
     private void setBackgroundColor(Category category, ConstraintLayout layout) {
         int colorId;
 

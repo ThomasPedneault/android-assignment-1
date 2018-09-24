@@ -6,6 +6,10 @@ import com.example.a1621638.android_assignment_1.model.Note;
 import java.util.Date;
 import java.util.Stack;
 
+/**
+ * Keeps a history of the changes to the Note object and allows the user to revert
+ * to previous changes.
+ */
 public class NoteManager {
 
     private Note currentNote;
@@ -19,12 +23,19 @@ public class NoteManager {
         currentNote.setCategory(Category.WHITE);
     }
 
+    /**
+     * Undoes the latest change to the note.
+     */
     public void undo() {
         if(!notes.isEmpty()) {
             currentNote = notes.pop();
         }
     }
 
+    /**
+     * Sets the title of the currently set Note and pushes a copy of the previous Note to the stack.
+     * @param title
+     */
     public void setTitle(String title) {
         notes.push(currentNote.clone());
         currentNote.setTitle(title);
@@ -34,6 +45,10 @@ public class NoteManager {
         return currentNote.getTitle();
     }
 
+    /**
+     * Sets the body of the currently set Note and pushes a copy of the previous Note to the stack.
+     * @param body
+     */
     public void setBody(String body) {
         notes.push(currentNote.clone());
         currentNote.setBody(body);
@@ -43,6 +58,10 @@ public class NoteManager {
         return currentNote.getBody();
     }
 
+    /**
+     * Sets the category of the currently set Note and pushes a copy of the previous Note to the stack.
+     * @param category
+     */
     public void setCategory(Category category) {
         notes.push(currentNote.clone());
         currentNote.setCategory(category);
@@ -52,6 +71,10 @@ public class NoteManager {
         return currentNote.getCategory();
     }
 
+    /**
+     * Sets the reminder of the currently set Note and pushes a copy of the previous Note to the stack.
+     * @param date
+     */
     public void setReminder(Date date) {
         notes.push(currentNote.clone());
         currentNote.setReminder(date);
